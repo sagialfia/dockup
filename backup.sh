@@ -5,7 +5,8 @@ export PATH=$PATH:/usr/bin:/usr/local/bin:/bin
 readonly tarball=$BACKUP_NAME$BACKUP_SUFFIX.tar.gz
 
 # Create a gzip compressed tarball with the volume(s)
-tar czf $tarball $BACKUP_TAR_OPTION $PATHS_TO_BACKUP
+#tar czf $tarball $BACKUP_TAR_OPTION $PATHS_TO_BACKUP
+tar czf $tarball $BACKUP_TAR_OPTION ['var/jenkins_home/jenkins_tar', '/etc/gitlab', '/var/opt/gitlab', '/var/log/gitlab', '/var/conversion/git-data']
 
 # Create bucket, if it doesn't already exist
 BUCKET_EXIST=$(aws s3 ls | grep $S3_BUCKET_NAME | wc -l)
